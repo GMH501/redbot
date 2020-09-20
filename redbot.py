@@ -22,21 +22,22 @@ ISSUE = os.getenv('ISSUE')
 FILEPATH = os.getenv('FILEPATH')
 FILENAME = os.getenv('FILENAME')
 
-print("==>Connecting to redmine url: {}..".format(URL))
+print("==>Connecting to redmine url \"{}\" ..".format(URL))
 redmine = Redmine(URL, username=USER, password=PASSWORD)
 print("   Connected.")
 
-print("==>Creating issue : {}..".format(ISSUE))
+print("==>Creating issue \"{}\" ..".format(ISSUE))
 try:
     issue = redmine.issue.create(
         project_id=PROJECT,
         subject=ISSUE,
         tracker_id=1,
+        priority_id=1,
         description='foo',
         uploads=[{'path': FILEPATH, "filename": FILENAME}]
     )
     print("   Issue created.")
     sys.exit(0)
-except Exeception as e:
+except Exception as e:
     print("   ERROR Creating issue: {}".format(e))
     sys.exit(1)
