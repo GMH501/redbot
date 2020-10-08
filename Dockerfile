@@ -5,5 +5,6 @@ RUN apk add --no-cache python3 && \
     pip3 install python-redmine && \
     apk del .build-deps && \
     chown -R 1001:1001 /redbot
+WORKDIR /redbot
 USER 1001
-CMD while true; ls sleep 300 done
+CMD /bin/sh script.sh
