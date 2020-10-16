@@ -18,6 +18,7 @@ URL = os.getenv('URL')
 USER = os.getenv('USER')
 PASSWORD = os.getenv('PASSWORD')
 PROJECT = os.getenv('PROJECT')
+FAILED_TASK = os.getenv('FAILED_TASK')
 ISSUE = os.getenv('ISSUE')
 FILEPATH = os.getenv('FILEPATH')
 FILENAME = os.getenv('FILENAME')
@@ -33,7 +34,7 @@ try:
         subject=ISSUE,
         tracker_id=1,
         priority_id=1,
-        description='foo',
+        description='The Task ' + FAILED_TASK + ' has failed.',
         uploads=[{'path': FILEPATH, "filename": FILENAME}]
     )
     print("   Issue created.")
